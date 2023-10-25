@@ -3,7 +3,6 @@ int setCost;
 int sum=0;
 int company;
 string selection;
-string loop;
 
 {
     bool run = true;
@@ -13,6 +12,7 @@ string loop;
         Console.WriteLine("1. Show prices");
         Console.WriteLine("2. Price calculator");
         Console.WriteLine("3. For loop");
+        Console.WriteLine("4. 'Split the third word off' ");
         Console.WriteLine("0. Exit");
 
         selection = Console.ReadLine();
@@ -91,13 +91,32 @@ string loop;
 
             case "3":
                 Console.WriteLine("Enter text to be looped 10 times: ");
-                loop = Console.ReadLine();
-                for (int n = 0; n < 10; n++)
+                string userInput = Console.ReadLine();
+
+                for (int i = 0; i < 10; i++)
                 {
-                    Console.Write(n);
+                    Console.WriteLine($"Repetition {i + 1}: {userInput}");
                 }
                 break;
 
+            case "4":
+                Console.Write("Enter a sentence: ");
+                string wordInput = Console.ReadLine();
+
+                // Split the user input into words using spaces as the separator
+                string[] words = wordInput.Split(' ');
+
+                // Check if there are at least three words
+                if (words.Length >= 3)
+                {
+                    string thirdWord = words[2]; // Arrays are zero-based, so the third word is at index 2
+                    Console.WriteLine($"The third word you entered is: {thirdWord}");
+                }
+                else
+                {
+                    Console.WriteLine("The input does not contain at least three words.");
+                }
+                break;
 
             default:
                 Console.WriteLine("Faulty input");
